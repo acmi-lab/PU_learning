@@ -21,6 +21,13 @@ To install requirements, setup a conda enviornment using the following command:
 conda env create --name PU_learning python=3.7 --file PU_env
 ```
 
+## Experiments 
+Working in progress! More details soon. 
+
+## License
+This repository is licensed under the terms of the [MIT non-commercial License](LICENSE).
+
+
 ## Questions?
 
 For more details, refer to the accompanying NeurIPS 2021 paper (Spotlight): [Mixture Proportion Estimation and PU Learning: A Modern Approach](https://arxiv.org/abs/2111.00980). If you have questions, please feel free to reach us at sgarg2@andrew.cmu.edu or open an issue.  
