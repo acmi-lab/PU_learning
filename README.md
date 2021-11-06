@@ -18,7 +18,7 @@ This repository is the official implementation of [Mixture Proportion Estimation
 To install requirements, setup a conda enviornment using the following command:
 
 ```setup
-conda env create --name PU_learning python=3.7 --file requirements.txt
+conda create --name PU_learning python=3.7 --file requirements.txt
 ```
 
 ## Experiments 
