@@ -22,7 +22,7 @@ conda create --name PU_learning python=3.7 --file requirements.txt -c pytorch
 ```
 
 ## Experiments 
-Working in progress! More details soon. 
+Work in progress! More details soon. 
 
 ## License
 This repository is licensed under the terms of the [MIT non-commercial License](LICENSE).
