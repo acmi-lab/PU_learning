@@ -1,0 +1,6 @@
+DEDPUL -- https://arxiv.org/abs/1902.06965
+nnPU -- https://arxiv.org/abs/1703.00593 
+uPU --  https://proceedings.neurips.cc/paper/2014/file/35051070e572e47d2c26c241ab88307f-Paper.pdf
+PvU -- https://cseweb.ucsd.edu/~elkan/posonly.pdf
+
+
