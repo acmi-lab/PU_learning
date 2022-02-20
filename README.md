@@ -19,11 +19,13 @@ If you find this repository useful or use this code in your research, please cit
 The code is written in Python and uses [PyTorch](https://pytorch.org/). To install requirements, setup a conda enviornment using the following command:
 
 ```setup
-conda create --name PU_env python=3.8 --file requirements.txt -c pytorch
+conda create --file requirements.txt
 ```
 
 ## Experiments 
 Work in progress! More details soon. 
+
+
 
 ## License
 This repository is licensed under the terms of the [MIT non-commercial License](LICENSE).
