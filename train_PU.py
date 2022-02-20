@@ -38,6 +38,7 @@ parser.add_argument('--seed', type=int, default=42, help='Seed')
 parser.add_argument('--alpha', type=float, default=0.5, help='Mixture proportion in unlabeled')
 parser.add_argument('--beta', type=float, default=0.5, help='Proportion of labeled in total data ')
 parser.add_argument('--log-dir', type=str, default='logging_accuracy', help='Dir for logging accuracies')
+parser.add_argument('--data-dir', type=str, default='data', help='Data directory')
 parser.add_argument('--optimizer', type=str, default='SGD', help='Optimizer used')
 parser.add_argument('--log-probs', action='store_true', default=False, help='Log probs to plot loss and perform ablations')
 
@@ -66,6 +67,7 @@ optimizer_str=args.optimizer
 alpha_estimate=0.5
 show_bar = False
 use_alpha = False
+data_dir = args.data_dir
 
 if train_method == "TEDn": 
     use_alpha=True
@@ -87,10 +89,10 @@ outfile= open(file_name, 'w')
 ## Obtain dataset 
 
 if train_method=='PN': 
-    u_trainloader, u_validloader, net= get_PN_dataset(data_type,net_type, device, alpha, beta, batch_size)
+    u_trainloader, u_validloader, net= get_PN_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size)
 else:
     p_trainloader, u_trainloader, p_validloader, u_validloader, net, X, Y, p_validdata, u_validdata, u_traindata = \
-        get_dataset(data_type,net_type, device, alpha, beta, batch_size)
+        get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size)
 
     train_pos_size= len(X)
     train_unlabeled_size= len(Y)

@@ -3,7 +3,7 @@ import numpy as np
 
 class BinarizedCifarData(torchvision.datasets.CIFAR10): 
     def __init__(self, root, train=True, transform=None, target_transform=None,
-                 download=False):
+                 download=True):
         super().__init__( root, train, transform, target_transform,
                  download)
         targets = np.array(self.targets)
@@ -22,7 +22,7 @@ class BinarizedCifarData(torchvision.datasets.CIFAR10):
 
 class DogCatData(torchvision.datasets.CIFAR10): 
     def __init__(self, root, train=True, transform=None, target_transform=None,
-                 download=False):
+                 download=True):
         super().__init__( root, train, transform, target_transform,
                  download)
         targets = np.array(self.targets)

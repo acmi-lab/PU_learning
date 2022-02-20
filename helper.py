@@ -112,7 +112,7 @@ def get_PNDataSplits(data_obj, pos_size, neg_size, data_type=None):
                 index=np.array(range(pos_size + neg_size)),data_type=data_type)
 
 
-def get_dataset(data_type,net_type, device, alpha, beta, batch_size): 
+def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size): 
 
     p_trainloader=None
     u_trainloader=None
@@ -221,8 +221,8 @@ def get_dataset(data_type,net_type, device, alpha, beta, batch_size):
                                     (0.1307,), (0.3081,))
                                 ])
 
-        traindata = MNIST17Data(root='./data_files', train=True, transform=transform_train)
-        testdata = MNIST17Data(root='./data_files', train=False, transform=transform_test)
+        traindata = MNIST17Data(root=data_dir, train=True, transform=transform_train)
+        testdata = MNIST17Data(root=data_dir, train=False, transform=transform_test)
 
         p_traindata, u_traindata = get_PUDataSplits(traindata, pos_size=3000, alpha=alpha, beta=beta,data_type='mnist')
         p_validdata, u_validdata = get_PUDataSplits(testdata, pos_size=500, alpha=alpha, beta=beta,data_type='mnist')
@@ -258,8 +258,8 @@ def get_dataset(data_type,net_type, device, alpha, beta, batch_size):
                                     (0.1307,), (0.3081,))
                                 ])
 
-        traindata = BinarizedMNISTData(root='./data_files', train=True, transform=transform_train)
-        testdata = BinarizedMNISTData(root='./data_files', train=False, transform=transform_test)
+        traindata = BinarizedMNISTData(root=data_dir, train=True, transform=transform_train)
+        testdata = BinarizedMNISTData(root=data_dir, train=False, transform=transform_test)
 
         p_traindata, u_traindata = get_PUDataSplits(traindata, pos_size=15000, alpha=alpha, beta=beta,data_type='mnist')
         p_validdata, u_validdata = get_PUDataSplits(testdata, pos_size=2500, alpha=alpha, beta=beta,data_type='mnist')
@@ -294,8 +294,8 @@ def get_dataset(data_type,net_type, device, alpha, beta, batch_size):
                                     (0.1307,), (0.3081,))
                                 ])
 
-        traindata = OverlapMNISTData(root='./data_files', train=True, transform=transform_train)
-        testdata = OverlapMNISTData(root='./data_files', train=False, transform=transform_test)
+        traindata = OverlapMNISTData(root=data_dir, train=True, transform=transform_train)
+        testdata = OverlapMNISTData(root=data_dir, train=False, transform=transform_test)
 
         p_traindata, u_traindata = get_PUDataSplits(traindata, pos_size=15000, alpha=alpha, beta=beta,data_type='mnist')
         p_validdata, u_validdata = get_PUDataSplits(testdata, pos_size=2500, alpha=alpha, beta=beta,data_type='mnist')
@@ -330,8 +330,8 @@ def get_dataset(data_type,net_type, device, alpha, beta, batch_size):
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
         ])
 
-        traindata = DogCatData(root='./data_files', train=True, transform=transform_train)
-        testdata = DogCatData(root='./data_files', train=False, transform=transform_test)
+        traindata = DogCatData(root=data_dir, train=True, transform=transform_train)
+        testdata = DogCatData(root=data_dir, train=False, transform=transform_test)
 
         p_traindata, u_traindata = get_PUDataSplits(traindata, pos_size=2500, alpha=alpha, beta=beta,data_type='cifar')
         p_validdata, u_validdata = get_PUDataSplits(testdata, pos_size=500, alpha=alpha, beta=beta,data_type='cifar')
@@ -366,8 +366,8 @@ def get_dataset(data_type,net_type, device, alpha, beta, batch_size):
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
         ])
 
-        traindata = BinarizedCifarData(root='./data_files', train=True, transform=transform_train)
-        testdata = BinarizedCifarData(root='./data_files', train=False, transform=transform_test)
+        traindata = BinarizedCifarData(root=data_dir, train=True, transform=transform_train)
+        testdata = BinarizedCifarData(root=data_dir, train=False, transform=transform_test)
 
         p_traindata, u_traindata = get_PUDataSplits(traindata, pos_size=12500, alpha=alpha, beta=beta,data_type='cifar')
         p_validdata, u_validdata = get_PUDataSplits(testdata, pos_size=2500, alpha=alpha, beta=beta,data_type='cifar')
@@ -455,7 +455,7 @@ def get_dataset(data_type,net_type, device, alpha, beta, batch_size):
 
     
 
-def get_PN_dataset(data_type,net_type, device,  alpha, beta, batch_size): 
+def get_PN_dataset(data_dir, data_type,net_type, device,  alpha, beta, batch_size): 
 
     u_trainloader=None
     u_validloader=None
@@ -541,8 +541,8 @@ def get_PN_dataset(data_type,net_type, device,  alpha, beta, batch_size):
                                     (0.1307,), (0.3081,))
                                 ])
 
-        traindata = MNIST17Data(root='./data_files', train=True, transform=transform_train)
-        testdata = MNIST17Data(root='./data_files', train=False, transform=transform_test)
+        traindata = MNIST17Data(root=data_dir, train=True, transform=transform_train)
+        testdata = MNIST17Data(root=data_dir, train=False, transform=transform_test)
 
         u_traindata = get_PNDataSplits(traindata, pos_size=3000, neg_size=int(3000*(1-alpha)*(1-beta)/beta), data_type='mnist')
         u_validdata = get_PNDataSplits(testdata,pos_size=int(500*alpha), neg_size=int(500*(1-alpha)),data_type='mnist')
@@ -572,8 +572,8 @@ def get_PN_dataset(data_type,net_type, device,  alpha, beta, batch_size):
                                     (0.1307,), (0.3081,))
                                 ])
 
-        traindata = BinarizedMNISTData(root='./data_files', train=True, transform=transform_train)
-        testdata = BinarizedMNISTData(root='./data_files', train=False, transform=transform_test)
+        traindata = BinarizedMNISTData(root=data_dir, train=True, transform=transform_train)
+        testdata = BinarizedMNISTData(root=data_dir, train=False, transform=transform_test)
 
         u_traindata = get_PNDataSplits(traindata, pos_size=15000, neg_size=int(15000*(1-alpha)*(1-beta)/beta), data_type='mnist')
         u_validdata = get_PNDataSplits(testdata, pos_size=int(2500*alpha), neg_size=int(2500*(1 - alpha)), data_type='mnist')
@@ -602,8 +602,8 @@ def get_PN_dataset(data_type,net_type, device,  alpha, beta, batch_size):
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
         ])
 
-        traindata = DogCatData(root='./data_files', train=True, transform=transform_train)
-        testdata = DogCatData(root='./data_files', train=False, transform=transform_test)
+        traindata = DogCatData(root=data_dir, train=True, transform=transform_train)
+        testdata = DogCatData(root=data_dir, train=False, transform=transform_test)
 
         u_traindata = get_PNDataSplits(traindata, pos_size=2500, neg_size=int(2500*(1-alpha)*(1-beta)/beta), data_type='cifar')
         u_validdata = get_PNDataSplits(testdata, pos_size=int(500*alpha), neg_size=int(500*alpha), data_type='cifar')
@@ -631,8 +631,8 @@ def get_PN_dataset(data_type,net_type, device,  alpha, beta, batch_size):
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
         ])
 
-        traindata = BinarizedCifarData(root='./data_files', train=True, transform=transform_train)
-        testdata = BinarizedCifarData(root='./data_files', train=False, transform=transform_test)
+        traindata = BinarizedCifarData(root=data_dir, train=True, transform=transform_train)
+        testdata = BinarizedCifarData(root=data_dir, train=False, transform=transform_test)
 
         u_traindata = get_PNDataSplits(traindata,pos_size=12500, neg_size=int(12500*(1-alpha)*(1-beta)/beta),data_type='cifar')
         u_validdata = get_PNDataSplits(testdata,pos_size=int(2500*alpha), neg_size=int(2500*(1-alpha)),data_type='cifar')
