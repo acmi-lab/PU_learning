@@ -116,10 +116,6 @@ elif optimizer_str=="AdamW":
 ## Train in the begining for warm start
 if warm_start and train_method=="TEDn": 
     
-    if args.log_probs: 
-        log_dir = file_name + "_probs"
-        os.makedirs(log_dir)
-
     outfile.write("Warm_start: \n")
 
     for epoch in range(warm_start_epochs): 

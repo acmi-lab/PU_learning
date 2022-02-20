@@ -1,14 +1,16 @@
-NUM_RUNS=1
-GPU_IDS=( 3 )
+NUM_RUNS=4
+GPU_IDS=( 0 1 2 3 )
 NUM_GPUS=${#GPU_IDS[@]}
 counter=0
 
+SEED=( 42 1432 8378 )
 LR=( 0.00005 )
 DATATYPE=( 'IMDb_BERT' )
-TRAINMETHOD=( 'PvU' )
+TRAINMETHOD=( 'PvU' 'CVIR' 'nnPU' 'uPU' 'TEDn' )
 NETTYPE=( 'DistilBert' )
 ALPHA=( 0.5 )
 
+for seed in "${SEED[@]}"; do
 for alpha in "${ALPHA[@]}"; do
 for lr in "${LR[@]}"; do
 for datatype in "${DATATYPE[@]}"; do
@@ -34,6 +36,7 @@ for trainmethod in "${TRAINMETHOD[@]}"; do
 	 if ! ((counter % NUM_RUNS)); then
 		  wait
 	 fi
+done
 done
 done
 done

@@ -5,9 +5,9 @@ counter=0
 
 SEED=( 42 1432 8378 ) 
 LR=( 0.1 )
-DATATYPE=( 'cifar_DogCat' 'cifar_binarized' )
+DATATYPE=( 'mnist_binarized' 'mnist_17' )
 TRAINMETHOD=( 'TEDn' 'CVIR' 'nnPU' 'uPU' 'PvU' )
-NETTYPE=( 'ResNet' 'AllConv' )
+NETTYPE=( 'FCN' )
 ALPHA=( 0.5 )
 
 for seed in "${SEED[@]}"; do 
@@ -25,10 +25,10 @@ for nettype in "${NETTYPE[@]}"; do
 
 	 if [ "$trainmethod" = "nnPU" ] || [ "$trainmethod" = "uPU" ]; then 
 	 	cmd="CUDA_VISIBLE_DEVICES=${gpu_id} python train_PU.py --lr=0.0001 --momentum=0.0\
-      		--data-type=${datatype} --train-method=${trainmethod} --net-type=${nettype} --epochs=2000 --optimizer=Adam --alpha=${alpha} --seed=${seed}"
+      		--data-type=${datatype} --train-method=${trainmethod} --net-type=${nettype} --epochs=1000 --optimizer=Adam --alpha=${alpha} --seed=${seed}"
 	 else
 	 	cmd="CUDA_VISIBLE_DEVICES=${gpu_id} python train_PU.py --lr=${lr} --momentum=0.9\
-      		--data-type=${datatype} --train-method=${trainmethod} --net-type=${nettype} --epochs=2000  --seed=${seed} --alpha=${alpha} --warm-start --warm-start-epochs=100"
+      		--data-type=${datatype} --train-method=${trainmethod} --net-type=${nettype} --epochs=1000  --seed=${seed} --alpha=${alpha} --warm-start --warm-start-epochs=100"
       	 fi 
 
          echo $cmd
