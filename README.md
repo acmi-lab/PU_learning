@@ -36,7 +36,7 @@ Change the parameters to your liking and run the experiment. For example, change
 We provide a set of scripts to run experiments. See scripts folder for details. We provide paper results in paper_results folder and the corresponding code for plots in plot_helper. 
 
 ## License
-This repository is licensed under the terms of the [MIT non-commercial License](LICENSE).
+This repository is licensed under the terms of the [Apache-2.0 License](LICENSE).
 
 ## Questions?
 
