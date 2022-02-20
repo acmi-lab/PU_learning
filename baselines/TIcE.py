@@ -5,6 +5,7 @@ import time
 import heapq
 
 import argparse
+from sklearn.decomposition import PCA
 
 
     
@@ -137,7 +138,35 @@ def tice(data, labels, k, folds, delta=None, nbIterations=2, maxSplits=500, useM
     return c_estimate, c_its_ests
 
 
+def min_max_scale(data):
+    data_norm = data - np.min(data, axis=0)
+    data_norm = data_norm / np.max(data_norm, axis=0)
+    return data_norm
 
+
+def tice_c_to_alpha(c, gamma):
+    return 1 - (1 - gamma) * (1 - c) / gamma / c
+
+def TiCE_estimate(p_data, u_data, data_type): 
+    if not data_type.startswith("UCI"):
+        pca = PCA(n_components=100, svd_solver='full')
+        new_X = pca.fit_transform(np.concatenate((u_data, p_data), axis=0))
+
+        X_mixture = new_X[0:len(u_data)]
+        X_component = new_X[len(u_data):]
+    else: 
+        X_mixture = u_data 
+        X_component = p_data
+    
+
+    data = np.concatenate((X_component,X_mixture),axis=0)
+    data = min_max_scale(data)
+    labels = np.concatenate((np.ones(len(X_component)), np.zeros(len(X_mixture))))
+    folds =  np.random.randint(5, size=len(data))
+
+    c = tice(data, labels, 10, folds=folds, delta=0.2)[0]
+    
+    return tice_c_to_alpha(c, 0.5)
 
 def subsetsThroughDT(data, tree_train, estimate, labels, splitCrit=max_bepp(5), minExamples=10, maxSplits=500,
                      c_prior=0.5, delta=0.0, n_splits=3):

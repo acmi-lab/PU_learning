@@ -1,5 +1,5 @@
 import numpy as np
-from dedpulUtils import maximize_log_likelihood, rolling_apply, MonotonizingTrends
+from .dedpulUtils import maximize_log_likelihood, rolling_apply, MonotonizingTrends
 from scipy.stats import gaussian_kde
 
 def estimate_diff(preds, target, bw_mix=0.05, bw_pos=0.1, kde_mode='logit', threshold='mid', k_neighbours=None,
@@ -223,3 +223,30 @@ def estimate_poster_dedpul(diff, alpha=None, quantile=0.05, alpha_as_mean_poster
         poster[poster < 0] = 0
 
     return 1 - alpha, poster
+
+
+def dedpul(pdata_probs, udata_probs,udata_targets):
+
+    alpha = None
+    poster = np.zeros_like(udata_probs[:,0])
+    preds = np.concatenate((1.0- pdata_probs, udata_probs[:,1]),axis=0)
+    targets = np.concatenate((np.zeros_like(pdata_probs), np.ones_like(udata_probs[:,1])), axis=0 )
+    
+    try:    
+        diff = estimate_diff(preds, targets) 
+        alpha, poster = estimate_poster_em(diff=diff, mode='dedpul', alpha=None)
+
+        if alpha<=1e-4: 
+            alpha, poster =  estimate_poster_dedpul(diff=diff, alpha=alpha)
+    
+    except: 
+        alpha = 0.0
+        poster = preds
+
+    return 1 - alpha, poster
+
+
+def dedpul_acc(udata_probs,udata_targets): 
+    predictions = (udata_probs >=0.5)
+
+    return np.mean(udata_targets == predictions) 

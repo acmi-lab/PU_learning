@@ -5,9 +5,8 @@ Using gradient thresholding of the $\C_S$-distance
 from cvxopt import matrix, solvers, spmatrix
 from math import sqrt
 import numpy as np
-import matplotlib.pyplot as plt
-plt.close('all')
 import scipy.linalg as scilin
+from sklearn.decomposition import PCA
 
 
 def find_nearest_valid_distribution(u_alpha, kernel, initial=None, reg=0):
@@ -169,3 +168,23 @@ def wrapper(X_mixture,X_component):
     lambda_star_est_2=mpe(kernel,N,M,nu=nu2)                    
     kappa_star_est_2=(lambda_star_est_2-1)/lambda_star_est_2
     return (kappa_star_est_2,kappa_star_est_1)	
+
+def KM_estimate(p_data, u_data, data_type):
+    if not data_type.startswith("UCI"):
+        pca = PCA(n_components=50, svd_solver='full')
+        new_X = pca.fit_transform(np.concatenate((u_data, p_data), axis=0))
+
+        X_mixture = new_X[0:len(u_data)]
+        X_component = new_X[len(u_data):]
+    else: 
+        X_mixture = u_data 
+        X_component = p_data
+    
+
+    n_shuffle = np.random.permutation(len(X_mixture))
+    p_shuffle = np.random.permutation(len(X_component))
+
+    X_component = X_component[p_shuffle][:2000]
+    X_mixture = X_mixture[n_shuffle][:2000]
+
+    return wrapper(X_mixture, X_component)
