@@ -37,7 +37,7 @@ parser.add_argument('--epochs', type=int, default=5000, help='Epochs for the spe
 parser.add_argument('--seed', type=int, default=42, help='Seed')
 parser.add_argument('--alpha', type=float, default=0.5, help='Mixture proportion in unlabeled')
 parser.add_argument('--beta', type=float, default=0.5, help='Proportion of labeled in total data ')
-parser.add_argument('--log-dir', type=str, default='logging_accuracy_final', help='Dir for logging accuracies')
+parser.add_argument('--log-dir', type=str, default='logging_accuracy', help='Dir for logging accuracies')
 parser.add_argument('--optimizer', type=str, default='SGD', help='Optimizer used')
 parser.add_argument('--log-probs', action='store_true', default=False, help='Log probs to plot loss and perform ablations')
 

@@ -1,7 +1,8 @@
 
 # Mixture Proportion Estimation and PU Learning: A Modern Approach
 
-This repository is the official implementation of [Mixture Proportion Estimation and PU Learning: A Modern Approach](https://arxiv.org/abs/2111.00980). If you find this repository useful or use this code in your research, please cite the following paper: 
+This repository is the official implementation of [Mixture Proportion Estimation and PU Learning: A Modern Approach](https://arxiv.org/abs/2111.00980). We also release implementation of relevant baselines for [MPE]() and [PU learning](). 
+If you find this repository useful or use this code in your research, please cite the following paper: 
 
 > Garg, S., Wu, Y., Smola, A., Balakrishnan, S., Lipton, Z. (2021). Mixture Proportion Estimation and PU Learning: A Modern Approach. arxiv preprint  arXiv:2111.00980. 
 ```
@@ -15,10 +16,10 @@ This repository is the official implementation of [Mixture Proportion Estimation
 
 ## Requirements
 
-To install requirements, setup a conda enviornment using the following command:
+The code is written in Python and uses [PyTorch](https://pytorch.org/). To install requirements, setup a conda enviornment using the following command:
 
 ```setup
-conda create --name PU_learning python=3.7 --file requirements.txt -c pytorch
+conda create --name PU_env python=3.8 --file requirements.txt -c pytorch
 ```
 
 ## Experiments 
