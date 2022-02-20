@@ -183,7 +183,6 @@ if train_method=='PvU':
             alpha_estimate =our_mpe_estimate
 
 
-        if estimate_alpha: 
             outfile.write("{}, {}, {}, {}, {}, {}, {}, {}\n".format(epoch, train_acc, valid_acc, dedpul_accuracy,\
                  alpha_estimate, dedpul_estimate, EN_estimate, scott_mpe_estimator) )
             outfile.flush()
@@ -217,10 +216,18 @@ elif train_method=='CVIR' or train_method=="TEDn":
 
             our_mpe_estimate, _, _ = BBE_estimator(pos_probs, unlabeled_probs, unlabeled_targets)
 
+            dedpul_estimate, dedpul_probs = dedpul(pos_probs, unlabeled_probs,unlabeled_targets)
+
+            EN_estimate= estimator_CM_EN(pos_probs, unlabeled_probs[:,0])
+
+            dedpul_accuracy = dedpul_acc(dedpul_probs,unlabeled_targets )*100.0
+
             alpha_estimate =our_mpe_estimate
 
-            outfile.write("{}, {}, {}, {}\n".format(epoch, train_acc, valid_acc, alpha_estimate))
+            outfile.write("{}, {}, {}, {}, {}, {}, {}, {}\n".format(epoch, train_acc, valid_acc, dedpul_accuracy,\
+                 alpha_estimate, dedpul_estimate, EN_estimate, scott_mpe_estimator) )
             outfile.flush()
+
         else: 
             outfile.write("{}, {}, {}\n".format(epoch, train_acc, valid_acc))
             outfile.flush()
