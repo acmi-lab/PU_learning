@@ -156,6 +156,7 @@ def train(epoch, net, p_trainloader, u_trainloader, optimizer, criterion, device
         if show_bar: 
             progress_bar(batch_idx, len(p_trainloader) + len(u_trainloader), 'Loss: %.3f | Acc: %.3f%% (%d/%d)'
                 % (train_loss/(batch_idx+1), 100.*correct/total, correct, total))
+        
 
     return 100.*correct/total
 

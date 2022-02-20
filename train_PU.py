@@ -31,6 +31,7 @@ parser.add_argument('--data-type', type=str, help='mnist | cifar')
 parser.add_argument('--train-method', type=str, help='training algorithm to use')
 parser.add_argument('--net-type', type=str, help='linear | FCN | ResNet')
 parser.add_argument('--sigmoid-loss', default=True, action='store_false', help='Sigmoid loss for nnPU training')
+parser.add_argument('--estimate-alpha', default=True, action='store_false', help='Estimate alpha')
 parser.add_argument('--warm-start', action='store_true', default=False, help='Start domain discrimination training')
 parser.add_argument('--warm-start-epochs', type=int, default=0, help='Epochs for domain discrimination training')
 parser.add_argument('--epochs', type=int, default=5000, help='Epochs for the specified training algorithm')
@@ -40,7 +41,6 @@ parser.add_argument('--beta', type=float, default=0.5, help='Proportion of label
 parser.add_argument('--log-dir', type=str, default='logging_accuracy', help='Dir for logging accuracies')
 parser.add_argument('--data-dir', type=str, default='data', help='Data directory')
 parser.add_argument('--optimizer', type=str, default='SGD', help='Optimizer used')
-parser.add_argument('--log-probs', action='store_true', default=False, help='Log probs to plot loss and perform ablations')
 
 args = parser.parse_args()
 
@@ -64,15 +64,15 @@ batch_size=args.batch_size
 epochs=args.epochs
 log_dir=args.log_dir + "/" + data_type +"/"
 optimizer_str=args.optimizer
-alpha_estimate=0.5
+alpha_estimate=0.0
 show_bar = False
 use_alpha = False
 data_dir = args.data_dir
+estimate_alpha = args.estimate_alpha
 
 if train_method == "TEDn": 
     use_alpha=True
 
-estimate_alpha = True
 
 
 #################
@@ -184,6 +184,8 @@ if train_method=='PvU':
 
             dedpul_accuracy = dedpul_acc(dedpul_probs,unlabeled_targets )*100.0
 
+            alpha_estimate =our_mpe_estimate
+
 
         if estimate_alpha: 
             outfile.write("{}, {}, {}, {}, {}, {}, {}, {}\n".format(epoch, train_acc, valid_acc, dedpul_accuracy,\
@@ -218,6 +220,8 @@ elif train_method=='CVIR' or train_method=="TEDn":
             unlabeled_probs, unlabeled_targets = u_probs(net, device, u_validloader)
 
             our_mpe_estimate, _, _ = BBE_estimator(pos_probs, unlabeled_probs, unlabeled_targets)
+
+            alpha_estimate =our_mpe_estimate
 
             outfile.write("{}, {}, {}, {}\n".format(epoch, train_acc, valid_acc, alpha_estimate))
             outfile.flush()

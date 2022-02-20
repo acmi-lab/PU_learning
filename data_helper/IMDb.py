@@ -39,13 +39,13 @@ def initialize_bert_transform(net):
                 (tokens['input_ids'],
                  tokens['attention_mask'],
                  tokens['token_type_ids']),
-                dim=2)
+                axis=2)
         elif net == 'distilbert-base-uncased':
             x = np.stack(
                 (tokens['input_ids'],
                  tokens['attention_mask']),
-                dim=2)
-        x = np.squeeze(x, axis=0) # First shape dim is always 1
+                axis=2)
+        # x = np.squeeze(x) # First shape dim is always 1
         return x
     return transform
 
@@ -58,8 +58,8 @@ class IMDbBERTData(torch.utils.data.Dataset):
         p_data_idx = np.where(labels==1)[0]
         n_data_idx = np.where(labels==0)[0]
         
-        self.p_data = encodings[:, p_data_idx, :]
-        self.n_data = encodings[:, n_data_idx, :]
+        self.p_data = encodings[p_data_idx, :, :]
+        self.n_data = encodings[n_data_idx, :, :]
 
         self.labels = labels
 

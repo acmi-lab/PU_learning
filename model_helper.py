@@ -51,7 +51,7 @@ def get_model(model_type, input_dim=None):
         net = AllConv()
         return net
     elif model_type == "DistilBert":
-        net = initialize_bert_based_model("distilbert-base-uncased", num_labels=2)
+        net = initialize_bert_based_model("distilbert-base-uncased", num_classes=2)
         return net 
     else:
         print("Model type must be one of FCN | CNN | linear ... ")

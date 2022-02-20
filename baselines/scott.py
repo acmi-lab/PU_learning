@@ -24,6 +24,8 @@ def bininv(m,e,c):
             plo = p
         p = (phi + plo)/2
 
+    return p
+
 def scott_estimator(pdata_probs, udata_probs):
     p_indices = np.argsort(pdata_probs)
     sorted_p_probs = pdata_probs[p_indices]
@@ -54,7 +56,7 @@ def scott_estimator(pdata_probs, udata_probs):
             j+= 1
 
         if j>1 and i > 1:
-            t = bininv(n, i, delta) / (1 - bininv(m, m-j, delta))
+            t = bininv(n, i, delta) / (1.0 - bininv(m, m-j, delta))
             # t = ((i*1.0/n) + np.sqrt(np.log(1/delta)/2/n))/( (j*1.0/m) - + np.sqrt(np.log(1/delta)/2/m))
             # if t > 0: 
             ratios.append(t)

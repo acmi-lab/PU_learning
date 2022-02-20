@@ -424,8 +424,9 @@ def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size):
         net = net.to(device)
 
     elif data_type=="IMDb_BERT": 
-        train_texts, train_labels = read_imdb_split('aclImdb/train')
-        test_texts, test_labels = read_imdb_split('aclImdb/test')
+
+        train_texts, train_labels = read_imdb_split(f'./{data_dir}/aclImdb/train')
+        test_texts, test_labels = read_imdb_split(f'./{data_dir}/aclImdb/test')
 
         transform = initialize_bert_transform('distilbert-base-uncased')
 
@@ -648,8 +649,8 @@ def get_PN_dataset(data_dir, data_type,net_type, device,  alpha, beta, batch_siz
         net = net.to(device)
     
     elif data_type=="IMDb_BERT": 
-        train_texts, train_labels = read_imdb_split('aclImdb/train')
-        test_texts, test_labels = read_imdb_split('aclImdb/test')
+        train_texts, train_labels = read_imdb_split(f'./{data_dir}/aclImdb/train')
+        test_texts, test_labels = read_imdb_split(f'./{data_dir}/aclImdb/test')
 
         transform = initialize_bert_transform('distilbert-base-uncased')
 
