@@ -6,11 +6,11 @@ If you find this repository useful or use this code in your research, please cit
 
 > Garg, S., Wu, Y., Smola, A., Balakrishnan, S., Lipton, Z. (2021). Mixture Proportion Estimation and PU Learning: A Modern Approach. arxiv preprint  arXiv:2111.00980. 
 ```
-@article{garg2021mixture,
-    title={Mixture Proportion Estimation and PU Learning: A Modern Approach},
-    author={Garg, Saurabh and Wu, Yifan and Smola, Alex and Balakrishnan, Sivaraman and Lipton, Zachary C.},
+@inproceedings{garg2021PUlearning,
+    title={Mixture Proportion Estimation and {PU} Learning: A Modern Approach},
+    author={Garg, Saurabh and Wu, Yifan and Smola, Alex and Balakrishnan, Sivaraman and Lipton, Zachary},
     year={2021},
-    journal={arXiv preprint arXiv:2111.00980},
+    booktitle={Advances in Neural Information Processing Systems (NeurIPS)} 
 }
 ```
 
