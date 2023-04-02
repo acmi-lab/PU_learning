@@ -46,13 +46,14 @@ args = parser.parse_args()
 
 torch.manual_seed(args.seed)
 torch.cuda.manual_seed(args.seed)
+torch.mps.manual_seed(args.seed)
 np.random.seed(args.seed)
 random.seed(args.seed)
 
 print(args)
 
 net_type = args.net_type
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = 'cuda' if torch.cuda.is_available() else ('mps' if torch.has_mps else 'cpu')
 train_method = args.train_method
 data_type = args.data_type
 ## Train set for positive and unlabeled
@@ -103,6 +104,10 @@ else:
 if device.startswith('cuda'):
     net = torch.nn.DataParallel(net)
     cudnn.benchmark = True
+
+if device.startswith('mps'):
+    net = torch.nn.DataParallel(net)
+    torch.backends.mps.benchmark = True
 
 criterion = nn.CrossEntropyLoss()
 
