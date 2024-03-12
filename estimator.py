@@ -63,7 +63,7 @@ def u_probs(net, device, u_loader):
 
 def DKW_bound(x,y,t,m,n,delta=0.1, gamma= 0.01):
 
-    temp = np.sqrt(np.log(1/delta)/2/n) + np.sqrt(np.log(1/delta)/2/m)
+    temp = np.sqrt(np.log(4/delta)/2/n) + np.sqrt(np.log(4/delta)/2/m)
     bound = temp*(1+gamma)/(y/n)
 
     estimate = t
