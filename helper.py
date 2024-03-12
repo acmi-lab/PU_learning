@@ -121,6 +121,7 @@ def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size):
     net=None
     X=None
     Y=None
+    NUM_WORKERS=0
 
     if data_type=='gaussian': 
         '''
@@ -140,13 +141,13 @@ def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size):
         Y = u_traindata.data
 
         p_trainloader = torch.utils.data.DataLoader(p_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         p_validloader = torch.utils.data.DataLoader(p_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
 
@@ -169,13 +170,13 @@ def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size):
         Y = u_traindata.data
 
         p_trainloader = torch.utils.data.DataLoader(p_traindata, batch_size=pos_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=pos_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         p_validloader = torch.utils.data.DataLoader(p_validdata, batch_size=pos_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=pos_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 2)
@@ -194,13 +195,13 @@ def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size):
         Y = u_traindata.data
 
         p_trainloader = torch.utils.data.DataLoader(p_traindata, batch_size=pos_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=pos_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         p_validloader = torch.utils.data.DataLoader(p_validdata, batch_size=pos_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=pos_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 2)
@@ -231,13 +232,13 @@ def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size):
         Y = u_traindata.data.reshape((u_traindata.data.shape[0], -1))
 
         p_trainloader = torch.utils.data.DataLoader(p_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         p_validloader = torch.utils.data.DataLoader(p_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 784)
@@ -268,13 +269,13 @@ def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size):
         Y = u_traindata.data.reshape((u_traindata.data.shape[0], -1))
 
         p_trainloader = torch.utils.data.DataLoader(p_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         p_validloader = torch.utils.data.DataLoader(p_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 784)
@@ -304,13 +305,13 @@ def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size):
         Y = u_traindata.data.reshape((u_traindata.data.shape[0], -1))
 
         p_trainloader = torch.utils.data.DataLoader(p_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         p_validloader = torch.utils.data.DataLoader(p_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 784)
@@ -340,13 +341,13 @@ def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size):
         Y = u_traindata.data.reshape((u_traindata.data.shape[0], -1))
 
         p_trainloader = torch.utils.data.DataLoader(p_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=int(batch_size*(1-beta)/beta), \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         p_validloader = torch.utils.data.DataLoader(p_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=int(batch_size*(1-beta)/beta), \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 3072)
@@ -376,13 +377,13 @@ def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size):
         Y = u_traindata.data.reshape((u_traindata.data.shape[0], -1))
 
         p_trainloader = torch.utils.data.DataLoader(p_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=int(batch_size*(1-beta)/beta), \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         p_validloader = torch.utils.data.DataLoader(p_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=int(batch_size*(1-beta)/beta), \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 3072)
@@ -411,13 +412,13 @@ def get_dataset(data_dir, data_type,net_type, device, alpha, beta, batch_size):
         Y = u_traindata.data.reshape((u_traindata.data.shape[0], -1))
 
         p_trainloader = torch.utils.data.DataLoader(p_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=int(batch_size*(1-beta)/beta), \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         p_validloader = torch.utils.data.DataLoader(p_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=int(batch_size*(1-beta)/beta), \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = p_data.shape[-1])
@@ -461,6 +462,7 @@ def get_PN_dataset(data_dir, data_type,net_type, device,  alpha, beta, batch_siz
     u_trainloader=None
     u_validloader=None
     net=None
+    NUM_WORKERS=0
 
     if data_type=='gaussian': 
         '''
@@ -478,9 +480,9 @@ def get_PN_dataset(data_dir, data_type,net_type, device,  alpha, beta, batch_siz
 
 
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
 
@@ -500,9 +502,9 @@ def get_PN_dataset(data_dir, data_type,net_type, device,  alpha, beta, batch_siz
         u_validdata = get_PNDataSplits(toy_testdata, unlabeled_size=pos_size*2)
 
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=pos_size*2, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=pos_size*2, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 2)
@@ -519,9 +521,9 @@ def get_PN_dataset(data_dir, data_type,net_type, device,  alpha, beta, batch_siz
 
 
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=pos_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=pos_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 2)
@@ -550,9 +552,9 @@ def get_PN_dataset(data_dir, data_type,net_type, device,  alpha, beta, batch_siz
 
 
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 784)
@@ -581,9 +583,9 @@ def get_PN_dataset(data_dir, data_type,net_type, device,  alpha, beta, batch_siz
 
 
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 784)
@@ -610,9 +612,9 @@ def get_PN_dataset(data_dir, data_type,net_type, device,  alpha, beta, batch_siz
         u_validdata = get_PNDataSplits(testdata, pos_size=int(500*alpha), neg_size=int(500*alpha), data_type='cifar')
 
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 3072)
@@ -640,9 +642,9 @@ def get_PN_dataset(data_dir, data_type,net_type, device,  alpha, beta, batch_siz
 
 
         u_trainloader = torch.utils.data.DataLoader(u_traindata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
         u_validloader = torch.utils.data.DataLoader(u_validdata, batch_size=batch_size, \
-            shuffle=True, num_workers=2)
+            shuffle=True, num_workers=NUM_WORKERS)
 
         ## Initialize model 
         net = get_model(net_type, input_dim = 3072)
